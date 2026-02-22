@@ -1,0 +1,22 @@
+<Project>
+<PropertyGroup>
+<!-- Target net9 for all projects by default -->
+<TargetFramework>net9.0</TargetFramework>
+
+
+<!-- Enable Central Package Management -->
+<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+
+<!-- Treat nullable as enabled for new projects -->
+<Nullable>enable</Nullable>
+
+
+<!-- consistent LangVersion -->
+<LangVersion>latest</LangVersion>
+
+
+<!-- Produce deterministic builds -->
+<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+</PropertyGroup>
+</Project>

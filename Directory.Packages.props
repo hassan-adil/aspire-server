@@ -1,0 +1,61 @@
+<Project>
+<ItemGroup>
+<!-- Core runtime -->
+<PackageVersion Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+<PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
+<PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0" />
+<PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
+<PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+<PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+<PackageVersion Include="Npgsql" Version="9.0.4" />
+<PackageVersion Include="System.Linq.Dynamic.Core" Version="1.7.1" />
+<PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0" />
+<PackageVersion Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+<PackageVersion Include="MediatR" Version="13.0.0" />
+<PackageVersion Include="Ardalis.GuardClauses" Version="5.0.0" />
+
+
+<!-- Messaging -->
+<PackageVersion Include="MassTransit" Version="8.5.5" />
+<PackageVersion Include="MassTransit.RabbitMQ" Version="8.5.5" />
+<PackageVersion Include="RabbitMQ.Client" Version="7.2.0" />
+<PackageVersion Include="MassTransit.EntityFrameworkCore" Version="8.5.5" />
+
+
+<!-- Logging / Observability -->
+<PackageVersion Include="Serilog.AspNetCore" Version="8.0.1" />
+
+
+<!-- Testing / Utilities -->
+<PackageVersion Include="FluentValidation" Version="12.0.0" />
+<PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
+
+
+<!-- Aspire -->
+<PackageVersion Include="Aspire.Hosting.Keycloak" Version="9.3.0-preview.1.25265.20" />
+<PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.0.0" />
+<PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="9.4.0" />
+<PackageVersion Include="Aspire.RabbitMQ.Client" Version="13.1.0" />
+<PackageVersion Include="Aspire.Hosting.Redis" Version="9.0.0-rc.1.24511.1" />
+
+
+  <!-- Service Defaults -->
+<PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.4.0" />
+<PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.3.1" />
+<PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
+<PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+<PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
+<PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0" />
+<PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.12.0" />
+
+
+<!-- API -->
+<PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.11" />
+<PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+<PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+<PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.6" />
+<PackageVersion Include="Refit" Version="8.0.0" />
+<PackageVersion Include="Refit.HttpClientFactory" Version="8.0.0" />
+  
+</ItemGroup>
+</Project>

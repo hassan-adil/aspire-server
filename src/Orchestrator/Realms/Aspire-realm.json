@@ -1,0 +1,204 @@
+﻿{
+  "realm": "Aspire",
+  "enabled": true,
+  "displayName": "Aspire Multi-Tenant Realm",
+  "passwordPolicy": "length(8) and digits(1) and upperCase(1) and specialChars(1)",
+
+  "roles": {
+    "realm": [
+      {
+        "name": "SuperAdmin",
+        "description": "Platform-level administrator with all permissions.",
+        "composite": false,
+        "attributes": {
+          "permissions": [
+            "*"
+          ]
+        }
+      },
+      {
+        "name": "TenantAdmin",
+        "description": "Tenant-level administrator.",
+        "composite": true,
+        "composites": { "realm": [ "Support", "Guest" ] },
+        "attributes": {
+          "permissions": [
+            "users.manage",
+            "roles.manage"
+          ]
+        }
+      },
+      {
+        "name": "Support",
+        "description": "Role for performing support level tasks.",
+        "composite": true,
+        "composites": { "realm": [ "Guest" ] },
+        "attributes": {
+          "permissions": [
+            "users.read",
+            "users.write",
+            "roles.read",
+            "roles.write"
+          ]
+        }
+      },
+      {
+        "name": "Guest",
+        "description": "Guest role.",
+        "composite": false,
+        "attributes": {
+          "permissions": [
+            "users.read",
+            "roles.read",
+            "permissions.read"
+          ]
+        }
+      }
+    ]
+  },
+
+  "clients": [
+    {
+      "clientId": "aspire-server",
+      "name": "Aspire API",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "M7GXMOdznfPIzRB9DOBW2HXLAc0YfkX4",
+      "protocol": "openid-connect",
+      "serviceAccountsEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "bearerOnly": false,
+      "authorizationServicesEnabled": false,
+      "defaultClientScopes": [ "profile", "email" ],
+
+      "protocolMappers": [
+        {
+          "name": "realm-roles-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "roles",
+            "jsonType.label": "String",
+            "multivalued": "true",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "tenantId-attribute-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "tenantId",
+            "claim.name": "tenantId",
+            "jsonType.label": "String",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "userId-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-property-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "id",
+            "claim.name": "userId",
+            "jsonType.label": "String",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "subject-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-property-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "id",
+            "claim.name": "sub",
+            "jsonType.label": "String",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+
+    {
+      "clientId": "aspire-frontend",
+      "name": "Aspire Frontend",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "redirectUris": [ "http://localhost:4200/*" ],
+      "webOrigins": [ "http://localhost:4200" ],
+      "defaultClientScopes": [ "profile", "email" ],
+
+      "protocolMappers": [
+        {
+          "name": "tenantId-attribute-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "tenantId",
+            "claim.name": "tenantId",
+            "jsonType.label": "String",
+            "id.token.claim": "true",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "superadmin",
+      "enabled": true,
+      "email": "superadmin@aspire.com",
+      "emailVerified": true,
+      "firstName": "Super",
+      "lastName": "Admin",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "SuperAdmin123!",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [ "SuperAdmin" ],
+      "clientRoles": {
+        "realm-management": [ "realm-admin" ]
+      },
+      "attributes": {
+        "tenants": [ "00000000-0000-0000-0000-000000000000" ]
+      }
+    },
+    {
+      "username": "guest",
+      "enabled": true,
+      "email": "guest@aspire.com",
+      "emailVerified": true,
+      "firstName": "Guest",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "tesT1234!!",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [ "Guest" ],
+      "attributes": {
+        "tenants": [ "00000000-0000-0000-0000-000000000000" ]
+      }
+    }
+  ]
+}

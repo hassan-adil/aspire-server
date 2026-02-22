@@ -1,0 +1,14 @@
+[
+  {
+    "name": "users.read",
+    "isGlobal": true
+  },
+  {
+    "name": "users.write",
+    "isGlobal": true
+  },
+  {
+    "name": "users.manage",
+    "isGlobal": true
+  }
+]
