@@ -2,7 +2,6 @@
 
 ![.NET](https://img.shields.io/badge/.NET-9.0-purple)
 ![Architecture](https://img.shields.io/badge/Architecture-Clean-blue)
-![Build](https://github.com/hassan-adil/aspire-server/actions/workflows/dotnet.yml/badge.svg)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 An **architecture-first microservice foundation** built with .NET 9.
